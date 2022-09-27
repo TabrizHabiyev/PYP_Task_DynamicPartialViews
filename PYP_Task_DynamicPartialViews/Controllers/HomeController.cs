@@ -15,18 +15,14 @@ namespace PYP_Task_DynamicPartialViews.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
+            List<Product> products = new List<Product>()
+            {
+                new Product { Id = Guid.NewGuid() , Name = "Product1" , Price = 250 },
+                new Product { Id = Guid.NewGuid() , Name = "Product2" , Price = 403 },
+                new Product { Id = Guid.NewGuid() , Name = "Product3" , Price = 120 }
+            };
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(products);
         }
     }
 }
